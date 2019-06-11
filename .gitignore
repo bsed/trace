@@ -1,0 +1,13 @@
+.idea/
+agent/agent
+
+agent/release/
+agentd/release/
+agentd/agent.zip
+agentd/apmAgentd
+
+collector/collector
+alert/alert
+web/web
+web/download/
+.DS_Store

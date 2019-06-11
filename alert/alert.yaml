@@ -1,0 +1,52 @@
+common:
+    version: 0.0.1
+    loglevel: debug
+    admintoken: "tracing.dev"
+
+
+mq:
+    topic: "tracing_alert"
+    addrs:
+        # 测试
+        # - "nats://10.7.14.26:4222"
+        # - "nats://10.7.14.236:4222"
+        # 生产
+        - "nats://10.33.44.96:4222"
+        - "nats://10.33.44.97:4222"
+        - "nats://10.33.44.98:4222"
+db:
+    cluster:
+    # - "10.77.0.130:9042"
+    # 测试
+    # - "10.77.64.46:9042"
+    # - "10.77.64.47:9042"
+    # - "10.77.64.48:9042"
+    # 生产
+    - "10.77.64.47:9042"
+    - "10.77.64.46:9042"
+    - "10.77.64.48:9042"
+    tracekeyspace: "tracing_data"
+    statickeyspace: "tracing_static"
+    numconns: 100
+
+app:
+    loadinterval: 30 
+
+ticker:
+    interval: 5
+
+control:
+    channels:
+        - "email"
+        - "mobile"
+    # 最大告警次数 
+    maxalarmcount: 2
+    # 两次告警时间间隔单位秒
+    alarminterval: 1
+    detailaddr: "http://apmtest.tf56.lo/ui/alerts/history?id="
+    emailurl: "http://mt-messageCenterService-vip/messageCenterService/MessageCenterHttpc/sendMessageCenter"
+    emaicentid: "19052310524920002"
+    emailsubject: "APM监控告警[测试]"
+    mobileurl: "http://mt-messageCenterService-vip/messageCenterService/MessageCenterHttpc/sendMessageCenter"
+    mobilecentid: "19052317175410002"
+

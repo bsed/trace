@@ -1,0 +1,87 @@
+common:
+  version: 0.0.1
+  loglevel: debug
+  admintoken: "tracing.dev"
+
+collector:
+  addr: "127.0.0.1:8082"
+  timeout: 30
+
+ticker:
+  num: 10
+  interval: 30 # 定时器间隔时间
+
+etcd:
+  addrs:
+      # - "127.0.0.1:2379"
+      # 测试
+      - "10.7.24.191:2379"
+      - "10.7.24.192:2379"
+      # 生产
+      # - "10.33.44.93:2379"
+      # - "10.33.44.94:2379"
+      # - "10.33.44.95:2379"
+  timeout: 10
+  reporttime: 10
+  ttl: 30
+  reportdir: "/newapCollector"
+
+apps:
+  # 加载app时间间隔
+  loadinterval: 30
+  # api二次聚合延迟时间
+  apistatsinterval: 30
+
+storage:
+    cluster:
+      # - "10.77.0.130:9042"
+      # 测试
+      - "10.77.64.46:9042"
+      - "10.77.64.47:9042"
+      - "10.77.64.48:9042"
+      # 生产
+      # - "10.77.64.47:9042"
+      # - "10.77.64.46:9042"
+      # - "10.77.64.48:9042"
+    tracekeyspace: "tracing_data"
+    statickeyspace: "tracing_static"
+    numconns: 50
+    spancachelen: 1000
+    spanchunkcachelen: 1000
+    metriccachelen: 1000
+    spanstoreinterval: 500
+    systemstoreinterval: 500
+    # stat信息是否自动删除
+    agentstatusettl: false
+    # 数据库种保存多久，单位秒
+    agentstatttl: 6
+    goruntinenum: 20
+
+stats:
+  # 延迟计算时间，单位秒
+  defertime: 60
+  # 应用拓扑图计算时间范围，单位秒
+  # mapdefer: 900
+  maprange: 60
+  # API应用调用计算时间范围，单位秒
+  # apicalldefer: 900
+  apicallrange: 60
+  # APDEX 满意时间指标，单位毫秒
+  satisfactiontime: 3000
+  # APDEX 可容忍时间指标，单位毫秒
+  toleratetime: 6000
+  defaultcode:
+      - 200
+      - 300
+
+
+mq:
+  topic: "tracing_alert"
+  addrs:
+        # 测试
+        - "nats://10.7.14.26:4222"
+        - "nats://10.7.14.236:4222"
+        # 生产
+        # - "nats://10.33.44.96:4222"
+        # - "nats://10.33.44.97:4222"
+        # - "nats://10.33.44.98:4222"

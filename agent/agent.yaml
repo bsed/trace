@@ -1,0 +1,40 @@
+common:
+  version: 2.0.1
+  loglevel: debug
+  admintoken: "tracing.dev"
+
+agent:
+  keepliveinterval: 3
+  useenv: false
+  env: "APM_TEST"
+  iscontainer: false
+  operatingenv: 1
+
+etcd:
+  addrs:
+      # - "127.0.0.1:2379"
+      # 测试环境
+      - "10.7.24.191:2379"
+      - "10.7.24.192:2379"
+      # 生产
+      # - "10.33.44.93:2379"
+      # - "10.33.44.94:2379"
+      # - "10.33.44.95:2379"
+  timeout: 3
+  watchdir: "/collector"
+
+collector:
+  keeplive: 2
+
+
+pinpoint:
+  infoaddr: "127.0.0.1:9994"
+  stataddr: "127.0.0.1:9995"
+  spanaddr: "127.0.0.1:9996"
+  spanreportinterval: 500
+  spanqueuelen: 50
+
+health:
+  # 该地址用于agentd的本地检查，在端口不冲突时，请不要修改
+  # 若要修改需要同时修改agentd中的对应地址
+  addr: "localhost:35671"
