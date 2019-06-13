@@ -71,7 +71,7 @@ func GetSqlByID(appName string, id int) string {
 	}
 
 	b, _ := g.B64.DecodeString(sql)
-	b = utils.TrimBytesExtraLineAndSpace(b)
+	//b = utils.TrimBytesExtraLineAndSpace(b)
 	return utils.Bytes2String(b)
 }
 

@@ -148,7 +148,6 @@ func Info(c echo.Context) error {
 	return c.JSON(http.StatusOK, g.Result{
 		Status:  http.StatusOK,
 		Data:    agents,
-		Version: agentVersion,
 	})
 }
 func Start() {
